@@ -1,10 +1,14 @@
+import { Dispatch } from 'redux';
+
+import bundle from '../../bundler';
 import { ActionType } from '../action-types';
 import {
 	DeleteCellAction,
-	InsertCellBeforeAction,
+	InsertCellAfterAction,
 	MoveCellAction,
 	UpdateCellAction,
 	Direction,
+	Action,
 } from '../actions';
 import { CellTypes } from '../cell';
 
@@ -35,15 +39,37 @@ export const moveCell = (id: string, direction: Direction): MoveCellAction => {
 	};
 };
 
-export const insertCellBefore = (
-	id: string,
+export const insertCellAfter = (
+	id: string | null,
 	cellType: CellTypes
-): InsertCellBeforeAction => {
+): InsertCellAfterAction => {
 	return {
-		type: ActionType.INSERT_CELL_BEFORE,
+		type: ActionType.INSERT_CELL_AFTER,
 		payload: {
 			id,
 			type: cellType,
 		},
+	};
+};
+
+export const createBundle = (cellId: string, input: string) => {
+	console.log('inside ', cellId);
+	return async (dispatch: Dispatch<Action>) => {
+		dispatch({
+			type: ActionType.BUNDLE_START,
+			payload: {
+				cellId,
+			},
+		});
+
+		const result = await bundle(input);
+
+		dispatch({
+			type: ActionType.BUNDLE_COMPLETE,
+			payload: {
+				cellId,
+				bundle: result,
+			},
+		});
 	};
 };

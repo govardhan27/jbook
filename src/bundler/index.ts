@@ -22,8 +22,8 @@ const bundle = async (rawCode: string) => {
 			},
 		});
 		return { code: result.outputFiles[0].text, err: '' };
-	} catch (err) {
-		return { code: '', err: '' };
+	} catch (err: any) {
+		return { code: '', err: err.message };
 	}
 	// bundling process
 };
