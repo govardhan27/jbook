@@ -57,7 +57,6 @@ const reducer = produce((state: CellsState, action: Action): CellsState => {
 			const foundIndex = state.order.findIndex(
 				(id) => id === action.payload.id
 			);
-			console.log('------', cell);
 			if (foundIndex === -1) {
 				state.order.unshift(cell.id);
 			} else {
