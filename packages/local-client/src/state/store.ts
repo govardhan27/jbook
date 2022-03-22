@@ -20,20 +20,20 @@ store.dispatch({
 		id: '',
 	},
 });
-store.dispatch({
-	type: ActionType.INSERT_CELL_AFTER,
-	payload: {
-		type: 'code',
-		id: '',
-	},
-});
+// store.dispatch({
+// 	type: ActionType.INSERT_CELL_AFTER,
+// 	payload: {
+// 		type: 'code',
+// 		id: '',
+// 	},
+// });
 
-store.dispatch({
-	type: ActionType.INSERT_CELL_AFTER,
-	payload: {
-		type: 'text',
-		id: '',
-	},
-});
+// store.dispatch({
+// 	type: ActionType.INSERT_CELL_AFTER,
+// 	payload: {
+// 		type: 'text',
+// 		id: '',
+// 	},
+// });
 
 console.log(store.getState());

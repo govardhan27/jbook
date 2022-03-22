@@ -3,6 +3,7 @@
 # dependencies
 /node_modules
 /packages/*/node_modules
+/packages/*/build
 /.pnp
 .pnp.js
 
@@ -25,3 +26,5 @@ yarn-error.log*
 
 .eslintcache
 /packages/*/dist
+
+/target/*
